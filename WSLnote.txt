@@ -2,3 +2,268 @@
 WSL
 29/4/26-thursday
 
+An Operating System (OS) is system software that manages computer hardware and software and allows users to interact with the computer.
+
+
+what is Linux
+It is an open source OS  used n servers, cloud and devOps
+
+CLI 
+command  line interface:we using commands instead of mouse to interact with computer
+
+What is WSL (Windows Subsystem for Linux)?
+WSL allow Linux to run inside windows
+
+Why WSL is Used in Real Companies
+Scenario:
+
+You are a developer in a company:
+
+Your laptop → Windows
+Production server → Linux (AWS EC2)
+
+🧠 What is Local Environment vs Production?
+💻 1. Local Environment
+👉 Definition:
+
+Your local environment is your own computer setup where you develop and test code
+
+🌍 2. Production Environment
+👉 Definition:
+
+The production environment is where the real application runs for users
+
+Example:
+Website running on cloud (AWS server)
+Real users accessing it
+Business depends on it
+
+👉 This is the live system
+
+Why should local environment match production?
+💡 Correct Engineer-Level Answer:
+
+If your local environment is different from production:
+
+Code may work locally ❌
+But fail in production ❌
+This leads to:
+Bugs
+Crashes
+Deployment failures
+-----------------------------------------------------------------------------------------------
+
+commands--------either run in CMD by using wsl by folleing commands, because we are using windows command prompt to  run   linux           
+        --------   run wsl directly and put commands
+----------------------------------------------------------------------------------------------------
+uname -a
+
+It shows:
+
+OS name (Linux)
+Kernel version
+Machine architecture (x86_64, etc.)
+Hostname
+
+
+pwd    //root
+ls     //no files in root
+
+cd ~
+pwd==print working directory(shows current working directory where your working file is)
+
+Output:
+/root
+❗ Why?
+
+Because:
+👉 ~ = home directory of current user
+👉 Your current user = root
+
+So:
+
+~ = /root
+
+| Symbol           | Meaning             |
+| ---------------- | ------------------- |
+| `/`              | Root of system      |
+| `/root`          | Home of root user   |
+| `~`              | Current user's home |
+| `/home/username` | Normal user home    |
+
+////so actulayy going to a file is giving full path that we need to start from root that is
+/mnt/host/c/Users/Anina.Abraham/Desktop        /mnt means it is the windows file system where we can acces c drive
+-----------------------------------------------------------------------------------------
+1.creating file command 
+touch filename.txt
+
+2.add content
+echo ""
+cat filename.txt
+
+3.copying file
+cp filename.txt copyfilename.txt
+
+3.rename file
+mv filename.txt renamefilename.txt
+
+4.delete file
+rm filename.txt 
+-----------------------------------------------------------------------------------------
+
+Phase: Permissions & sudo (CRITICAL FOR DEVOPS)
+🧠 Concept: File Permissions
+
+Every file has:
+
+Owner
+Permissions
+
+chmod 777 filename.txt //gives not safe,beacuse it give full acces to everone ,but others can read,write and execute only that is rwx--rwx--,so anyone can edit it
+
+🧠 2️⃣ What does 777 mean?
+
+👉 This is VERY IMPORTANT — learn this properly.
+
+Permission numbers:
+Number	Meaning
+4	Read (r)
+2	Write (w)
+1	Execute (x)
+4+2+1=7     777=rwx
+| Section  | Who    |
+| -------- | ------ |
+| First 7  | Owner  |
+| Second 7 | Group  |
+| Third 7  | Others |
+
+------------------------------------------------------------------------------------
+
+What is ls -l?
+✅ Answer:
+
+👉 ls -l shows detailed file information
+------------------------------------------------------------------------------------
+What does chmod 000 do?(👉 chmod = change mode (permissions) of a file or directory)
+
+
+👉 Means:
+
+Owner ❌ no access
+Group ❌ no access
+Others ❌ no access
+
+👉 So:
+No normal user can read/write/execute
+Root CAN still read/write/execute, even if permissions are 000
+
+✔ Final correct idea:
+
+Normal user → ❌ blocked
+Root → ✅ full access (permissions don’t stop root)
+-------------------------------------------------------------------------
+
+🔐 sudo (Super User Access)
+👉 sudo allows a normal user to run commands with root (admin) privileges
+
+👤 Create Normal User + Use sudo
+adduser devuser
+give password
+switch user= su - devuser
+whoami =checking now who am I?user or root?
+////////in this  ubuntu we are notinstalled,so sudo didn't work//////
+
+------------------------------------------------------------------------------
+File Viewing & Debugging (REAL DEVOPS WORK)
+1️⃣ cat
+
+👉 Shows full file
+
+cat test.txt
+2️⃣ head
+
+👉 Shows first lines
+
+head test.txt
+3️⃣ tail
+
+👉 Shows last lines (VERY IMPORTANT)
+
+tail test.txt
+4️⃣ less
+
+👉 Scroll through file
+
+less test.txt
+
+👉 Controls:
+
+↑ ↓ scroll
+q → quit
+
+
+-----------------------------------------------------------------------
+
+🔍 Topic: Searching Logs using grep
+
+creating a log
+ use commands
+
+touch app.log
+
+grep commads foe eroor checking
+
+grep "ERROR" test.txt
+
+grep -i "error" test.txt (incasesensitive)
+
+grep -c "ERROR" test.txt (count )
+
+Why grep is useful in DevOps
+
+
+✅ Strong Answer:
+
+👉 “grep is used to quickly filter and search logs for specific patterns like errors, warnings, or events, which helps in faster debugging.”
+
+1️⃣ Show line numbers
+grep -n "ERROR" app.log
+2️⃣ Show lines NOT containing ERROR
+grep -v "ERROR" app.log
+3️⃣ Combine with tail (REAL DEVOPS)
+tail app.log | grep "ERROR"
+
+--------------------------------------------------------------
+pipes and chainig commands
+
+What is | (pipe)?
+
+👉 Pipe means:
+“Take output of one command → give it to another command”
+🧪 Real DevOps Scenario
+
+👉 Your app is failing
+👉 You need:
+
+Only last 10 logs
+Only ERROR lines
+With line numbers
+Try this:
+tail -n 10 app.log | grep -n "ERROR"
+-----------------------------------------------------------------------
+
+find Command
+
+🧠 Why find?
+
+In real systems:
+
+Thousands of files
+You don’t know location ❌
+You search using CLI ✅
+
+find . -name "app.log"
+
+
+find . -name "*.txt"            //with .txt extensions
+
