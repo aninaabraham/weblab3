@@ -276,7 +276,7 @@ find . -name "*.txt"            //with .txt extensions
 
 
 grep and find diffence?
-find==search for file swith name.,type
+find==search for files with name.,type
 grep ==serach for lines in  file
 -------------------------------------------------------------------
 
@@ -311,3 +311,26 @@ yy         # Copy a line
 p          # Paste
 /error     # Search for the word "error"
 n          # Jump to next search result
+----------------------------------------------------------------------
+ls commands
+
+ls is used for:showing files with permissions,ownership details
+
+debugging
+checking logs
+permissions
+file tracking
+
+ls-la : shows the hidden files
+ls-lt : shows the lateset files, Find latest changes quickly
+ls-ltr : shows the oldest files  first
+ls-lh  :human readable format
+ls-lhs : shows the largest files
+ls -lart :shows the hidden files,long format,time sorting reverse order
+ls -d :shows the directories
+ls -R :recursive listing ,shows the full folder tree structure
+
+----------------------------------------------------------------------------
+🔥 What is awk?
+
+👉 awk is used to process and extract data from text
