@@ -53,7 +53,7 @@ Crashes
 Deployment failures
 -----------------------------------------------------------------------------------------------
 
-commands--------either run in CMD by using wsl by folleing commands, because we are using windows command prompt to  run   linux           
+commands--------either run in CMD by using wsl by following commands, because we are using windows command prompt to  run   linux           
         --------   run wsl directly and put commands
 ----------------------------------------------------------------------------------------------------
 uname -a
@@ -173,6 +173,13 @@ switch user= su - devuser
 whoami =checking now who am I?user or root?
 ////////in this  ubuntu we are notinstalled,so sudo didn't work//////
 
+What is sudo (Real Understanding)
+✅ Definition
+
+👉 sudo = SuperUser DO
+
+👉 It allows a normal user to run a command as root (admin)
+
 ------------------------------------------------------------------------------
 File Viewing & Debugging (REAL DEVOPS WORK)
 1️⃣ cat
@@ -267,3 +274,63 @@ find . -name "app.log"
 
 find . -name "*.txt"            //with .txt extensions
 
+
+grep and find diffence?
+find==search for files with name.,type
+grep ==serach for lines in  file
+-------------------------------------------------------------------
+
+🔥 What is export?
+
+👉 export is used to create environment variables
+“export makes a variable available to the system and child processes.”
+----------------------------------------------------------
+
+nano  
+used for editing files in terminal
+
+vim 
+# Open a file
+vim myfile.txt
+
+# STEP BY STEP:
+i          # Enter Insert mode → now you can type
+Esc        # Go back to Normal mode
+
+# Saving & Quitting (in Normal mode, press :)
+:w         # Save (write)
+:q         # Quit
+:wq        # Save AND quit ← you'll use this the most
+:q!        # Quit WITHOUT saving (force quit)
+
+# Navigation in Normal mode (no mouse needed)
+gg         # Go to top of file
+G          # Go to bottom of file
+dd         # Delete entire line
+yy         # Copy a line
+p          # Paste
+/error     # Search for the word "error"
+n          # Jump to next search result
+----------------------------------------------------------------------
+ls commands
+
+ls is used for:showing files with permissions,ownership details
+
+debugging
+checking logs
+permissions
+file tracking
+
+ls-la : shows the hidden files
+ls-lt : shows the lateset files, Find latest changes quickly
+ls-ltr : shows the oldest files  first
+ls-lh  :human readable format
+ls-lhs : shows the largest files
+ls -lart :shows the hidden files,long format,time sorting reverse order
+ls -d :shows the directories
+ls -R :recursive listing ,shows the full folder tree structure
+
+----------------------------------------------------------------------------
+🔥 What is awk?
+
+👉 awk is used to process and extract data from text
